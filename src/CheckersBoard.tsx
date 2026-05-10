@@ -57,7 +57,7 @@ export const CheckersBoard: React.FC<CheckersBoardProps> = ({ difficulty = 'pvp'
     }
   }, [turn, difficulty, board]);
 
-  const getValidMovesForPiece = (b: BoardState, r: number, c: number, activeColor: 'w'|'b') => {
+  const getValidMovesForPiece = (b: BoardState, r: number, c: number, activeColor: 'w'|'b'): { r: number, c: number, jumpPos?: { r: number, c: number } }[] => {
     const piece = b[r][c];
     if (!piece || piece.toLowerCase() !== activeColor) return [];
 
@@ -65,8 +65,8 @@ export const CheckersBoard: React.FC<CheckersBoardProps> = ({ difficulty = 'pvp'
     const forwardDir = activeColor === 'w' ? -1 : 1;
     const directions = isKing ? [[1, 1], [1, -1], [-1, 1], [-1, -1]] : [[forwardDir, 1], [forwardDir, -1]];
     
-    let moves = [];
-    let jumps = [];
+    let moves: { r: number, c: number, jumpPos?: { r: number, c: number } }[] = [];
+    let jumps: { r: number, c: number, jumpPos?: { r: number, c: number } }[] = [];
 
     for (const [dr, dc] of directions) {
       const nr = r + dr;
