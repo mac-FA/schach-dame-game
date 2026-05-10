@@ -18,7 +18,7 @@ export const ChessBoard: React.FC<ChessBoardProps> = ({ difficulty = 'pvp', onGa
   const getPieceSymbol = (piece: any) => {
     if (!piece) return '';
     const symbols: Record<string, Record<string, string>> = {
-      'w': { p: '♙', n: '♘', b: '♗', r: '♖', q: '♕', k: '♔' },
+      'w': { p: '♟', n: '♞', b: '♝', r: '♜', q: '♛', k: '♚' },
       'b': { p: '♟', n: '♞', b: '♝', r: '♜', q: '♛', k: '♚' }
     };
     return symbols[piece.color][piece.type];
